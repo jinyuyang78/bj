@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,shrink-to-fit=no,user-scalable=no,minimal-ui" name="viewport">
+    <title>本家</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css" type="text/css">
+    <script src="js/rem.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="bgtop">
+            <p id="nickNmame" class="name">熊猫不是猫</p>
+            <p id="tel" class="tel">商家电话:<span>15210792815</span></p>
+            <div class="txbox" id="home-av"><img src="img/tx.png"> </div>
+            <!--<a class="tzbtn"><div class="pr"><div class="yd pa"></div></div></a>-->
+        </div>
+
+        <ul class="indexul">
+            <li><a href="jf.html"><p class="wz">积分</p><p class="sz">785</p></a></li>
+            <li><a href="czinfo.html"><p class="wz" >储值</p><p class="sz">2000</p></a></li>
+        </ul>
+
+        <div class="tabs pr">
+            <a href="javascript:void(0);" class="active">附件优惠</a>
+            <a href="javascript:void(0);" class="rm">热门</a>
+            <i class="lwtp"></i>
+        </div>
+        <div id="tabs-container" class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="content-slide">
+                        <div class="yhqbox pr"> 
+                            <span class="qfh pa">￥</span>
+                            <p class="yhje pa">10.0</p>
+                            <p class="sjname pa">爱租时代</p>
+                            <p class="sjadd pa">爱租时代爱租时代爱租时代爱租时代爱租时代爱租时代</p>
+                            <a class="lqbtn pa" href="javascript:void(0)">立即领取</a>
+                            <img src="img/yhjbg.png">
+                        </div>
+
+                        <div class="yhqbox pr">
+                            <span class="qfh pa">￥</span>
+                            <p class="yhje pa">10.0</p>
+                            <p class="sjname pa">爱租时代</p>
+                            <p class="sjadd pa">爱租时代爱租时代爱租时代爱租时代爱租时代爱租时代</p>
+                            <a class="lqbtn pa" href="javascript:void(0)">立即领取</a>
+                            <img src="img/yhjbg.png">
+                        </div>
+
+                        <div class="yhqbox pr">
+                            <span class="qfh pa">￥</span>
+                            <p class="yhje pa">10.0</p>
+                            <p class="sjname pa">爱租时代</p>
+                            <p class="sjadd pa">爱租时代爱租时代爱租时代爱租时代爱租时代爱租时代</p>
+                            <a class="lqbtn pa" href="javascript:void(0)">立即领取</a>
+                            <img src="img/yhjbg.png">
+                        </div>
+
+                    </div>
+                </div >
+                <div class="swiper-slide" >
+                    <div class="content-slide">
+                        <ul class="imgxq">
+                            <li><a href="jfinfo.html"><div style="background-image: url('img/t1.jpg');"></div><p>不知道是啥罚款是电缆附件</p></a></li>
+                            <li><a href="lqdjq.html"><div style="background-image: url('img/wdbg.png');"></div><p>不知道是啥罚款是电缆附件</p></a></li>
+                            <li><a href="sjrz.html"><div style="background-image: url('img/t1.jpg');"></div><p>不知道是啥罚款是电缆附件</p></a></li>
+                            <li><a href="yhjinfo.html"><div style="background-image: url('img/tx.png');"></div><p>不知道是啥罚款是电缆附件</p></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+<script>
+    var Windwidth=$(window).width()
+    if(Windwidth>750){
+        Windwidth=750
+    }
+    $(function () {
+        var tabsSwiper = new Swiper('#tabs-container', {
+            speed: 500,
+            autoHeight: true,
+            //initialSlide :1,
+            onSlideChangeStart: function () {
+                $(".tabs .active").removeClass('active');
+                $(".tabs a").eq(tabsSwiper.activeIndex).addClass('active')
+            }
+        });
+        $(".tabs a").on('touchstart mousedown', function (e) {
+            e.preventDefault();
+            $(".tabs .active").removeClass('active');
+            $(this).addClass('active');
+            tabsSwiper.slideTo($(this).index())
+        });
+        $(".tabs a").click(function (e) {
+            e.preventDefault()
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,shrink-to-fit=no,user-scalable=no,minimal-ui" name="viewport">
+    <title>本家</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+
+    </style>
+    <script src="js/rem.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="nav"><a class="fhbtn" onclick="history.back(-1)"></a>积分</div>
+        <div class="jfbox pr">
+            <ul class="jf">
+                <li style="width: 100%"><p class="wz" >当前储值</p><p class="sz">1550</p></li>
+            </ul>
+        </div>
+
+        <ul class="jfmx">
+            <li>
+                <div class="xx fl"><p>2017-15-12 08:45</p><p class="wqm qmbtn">签名</div>
+                <div class="jfxx fr"><p>+20</p><p>剩余:<span>400</span></div>
+            </li>
+            <li>
+                <div class="xx fl"><p>2017-15-12 08:45</p><p class="wqm qmbtn">签名</div>
+                <div class="jfxx fr"><p>+20</p><p>剩余:<span>400</span></div>
+            </li>
+            <li>
+                <div class="xx fl"><p>2017-15-12 08:45</p><p class="qmbtn">签名</div>
+                <div class="jfxx fr"><p>+20</p><p>剩余:<span>400</span></div>
+            </li>
+            <li>
+                <div class="xx fl"><p>2017-15-12 08:45</p><p class="qmbtn">签名</div>
+                <div class="jfxx fr"><p>+20</p><p>剩余:<span>400</span></div>
+            </li>
+            <li>
+                <div class="xx fl"><p>2017-15-12 08:45</p><p class="qmbtn">签名</div>
+                <div class="jfxx fr"><p>+20</p><p>剩余:<span>400</span></div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="qmb">
+        <div class="js-signature" data-auto-fit="true" data-width="750"></div>
+        <div class="btnbox">
+            <button id="clearBtn" class="btn" onclick="clearCanvas();">清除</button>
+            <button id="saveBtn" class="btn" onclick="saveSignature();" disabled>确定</button>
+        </div>
+        <div id="signature"></div>
+    </div>
+    <div class="mask"></div>
+    <div class="fxbox">
+        <img src="img/fxbg.png">
+        <div class="fxxx">
+            <p>优惠券金额</p>
+            <p class="je">50.0</p>
+            <p>佳艺理发屋</p>
+            <p>备注：此券只用于烫发</p>
+            <p>有效期至:2018-12-12</p>
+        </div>
+        <a class="fxzqbtn" onclick="qfxzq()">分享得积分、赚钱</a>
+        <a class="gbbtn" onclick="colose()"></a>
+    </div>
+    <div  class="fxzy">
+        <img src="img/fxzy.png">
+    </div>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jq-signature.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function() {
+            var hei=$(window).height();
+            var wid=$(window).width();
+            if ($('.js-signature').length) {
+                $('.js-signature').jqSignature({height:hei},{width:wid});
+            }
+            $(".mask").css('height',hei)
+        });
+        $('.qmbtn').on('click',function () {
+            $('.qmb').addClass('qmb2')
+            $('.btnbox').show();
+        })
+        function clearCanvas() {
+            $('#signature').html('<p><em></em></p>');
+            $('.js-signature').eq(0).jqSignature('clearCanvas');
+            $('#saveBtn').attr('disabled', true);
+        }
+
+        function saveSignature() {
+            $('#signature').empty();
+            var dataUrl = $('.js-signature').eq(0).jqSignature('getDataURL');
+            var img = $('<img>').attr('src', dataUrl);
+            $('#signature').append($('<p>').text("Here's your signature:"));
+            $('#signature').append(img);
+            $('.qmb').removeClass('qmb2')
+            $('.btnbox').hide();
+            $('.mask,.fxbox').show();
+        }
+        $('.js-signature').eq(0).on('jq.signature.changed', function() {
+            $('#saveBtn').attr('disabled', false);
+        });
+
+        function colose() {
+            $('.mask,.fxbox').hide();
+        }
+
+        function qfxzq() {
+            $('.fxbox').hide();
+            $('.fxzy').show();
+        }
+    </script>
+</body>
+</html>
